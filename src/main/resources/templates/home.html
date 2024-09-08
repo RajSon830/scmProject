@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <link rel="stylesheet"  data-th-href="@{'css/output.css'}"  />
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
+    <style>
+
+        .container{
+            margin:auto;
+            width: 50%;
+            padding: 30px;
+            background: #e2e2e2;
+        }
+
+    </style>
+
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Document</title>
+</head>
+<body>
+        <div class="bg-gray-200 w-1/2 p-4 flex flex-col space-y-3 mx-auto items-center">
+                <h1  class="text-2 font-bold"  data-th-text="${name}">Welcome to home page</h1>
+                <p class="text-xl  text-gray-700">Youtube Channel : <span data-th-text="${youttubeChannel}"></span></p>
+
+               <a data-th-href="${love}"> Click Here to open Link</a>
+
+              <p>
+                  The paragraph symbol (§) is used to divide a text into individual sections . Usually, a paragraph contains several
+                  sentences that relate to a topic, an idea or a fact.
+                  The beginning of § 242 in the German Criminal Code serves as an example.
+              </p>
+
+            <button class="px-3 py-3 rounded bg-blue-700 text-white  hover:bg-blue-600">
+            Click Here
+            </button>
+        </div>
+
+
+</body>
+</html>
