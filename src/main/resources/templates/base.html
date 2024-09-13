@@ -1,6 +1,112 @@
-<div class="parent-fragment" th:fragment="parent(content)">
-        <h1>This is parent fragment</h1>
-        <p>Lorem ipsum dolor sit amet consectetur  adipisicing elit. Assumendra, ad. </p>
+<!doctype html>
+<html lang="en"
+      th:fragment = "parent(content,title,script)"
+      xmlns:th="http://www.thymelead.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title data-th-replace="${title}">Base Page </title>
+        <link rel="stylesheet"  data-th-href="@{'css/output.css'}"  />
 
-        <div th:replace="${content}"></div>
-</div>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+</head>
+<body >
+
+
+            <div data-th-replace="navbar :: navbar">
+
+            </div>
+
+
+            <div class="p-4">
+
+                <section  data-th-replace="${content}"></section>
+
+            </div>
+
+
+
+            <footer class="p-4">
+
+                Footer: Learn Code With Raj Sonawala
+                <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
+                <script>
+
+                    console.log("Hello World");
+
+                    let currentTheme = getTheme();
+
+                    // initially going to work by itself
+                    changeTheme(currentTheme);
+
+
+                    // TODO :
+                    function changeTheme()
+                    {
+                        document.querySelector('html').classList.add(currentTheme);
+                        console.log(currentTheme)
+
+                        // set the listener to change theme button
+                        const changeThemebutton =  document.querySelector("#theme_change_button")
+
+                        changeThemebutton.addEventListener('click', (event)=>{
+
+                            const oldTheme = currentTheme;
+
+                                console.log("button click ")
+
+                            if(currentTheme == '"dark'){
+
+                                   currentTheme='light';
+                            }
+                            else{
+                                  currentTheme='dark';
+                            }
+
+                            // local storage
+
+                            setTheme(currentTheme);
+                        document.querySelector("html").classList.remove(oldTheme);
+                            document.querySelector('html').classList.add(currentTheme);
+
+                        });
+
+
+                    }
+
+                    // set Theme to local Storage
+                    function setTheme(theme){
+                            localStorage.setItem("theme",theme);
+                    }
+
+                    function getTheme(){
+                        let theme = localStorage.getItem("theme")
+
+                        if(theme){
+                            return theme;
+                        }
+                        else{
+                            return "light";
+                        }
+                    }
+
+
+
+                    //get theme from localstorage
+
+
+
+                </script>
+
+            </footer>
+
+
+
+            <th:block  data-th-replace="${script}"></th:block>
+
+</body>
+</html>
