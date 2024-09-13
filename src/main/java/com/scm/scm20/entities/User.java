@@ -1,10 +1,8 @@
 package com.scm.scm20.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
+import java.util.*;
 
 @Entity(name = "user")
 @Table(name = "users")
@@ -38,4 +36,10 @@ public class User {
 
         private Providers provider=Providers.SELF;
         private String providerUserId;
+
+         @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+        private List<Contact> contactList=new ArrayList<>();
+
+
+
 }
